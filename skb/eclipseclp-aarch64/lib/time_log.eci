@@ -1,0 +1,12 @@
+:- module(time_log).
+:- export initialise_time_logging / 1.
+:- export log_time_local / 2.
+:- export collate_time_logs / 4.
+:- comment(categories, ["Development Tools"]).
+:- comment(summary, "Module for logging and collating test times").
+:- comment(copyright, "Cisco Systems, Inc").
+:- comment(date, "$Date: 2009/07/16 09:11:24 $").
+:- comment(desc, html("\tThis module is used for logging and collating the times taken to run\n\ttests (but could be used for other similar purposes).  Before\n\trunning any tests, call initialise_time_logging/1.  This deletes any\n\told administrative files from a previous test run.  Then, within the\n\ttest harness for an individual test, call log_time_local/2 to log\n\tthe time taken for the test to a temporary local file.  Finally,\n\tonce all the tests have completed successfully, call\n\tcollate_time_logs/4 to collect all the local administrative files\n\tand add all the data to the master log file.\n")).
+:- comment(collate_time_logs / 4, [summary : "Collate local time logs into master log", amode : collate_time_logs(++, ++, ++, ++), args : ["Directory" : "Root test directory", "Package" : "ECLiPSe package used", "Embedding" : "ECLiPSe embedding used", "MasterLogFile" : "Master log file"], desc : html("    \tCollates all the temporary administrative files in the directory\n\ttree specified and logs them to the specified master log file.</P><P>\n\n\tPackage specifies which ECLiPSe package was used, such as `standard'\n\tor `runtime'.</P><P>\n\n\tEmbedding specifies which ECLiPSe embedding was used, such as\n\t`standalone' or `java'.</P><P>\n")]).
+:- comment(initialise_time_logging / 1, [summary : "Prepare for time logging", amode : initialise_time_logging(++), args : ["Directory" : "Root test directory"], desc : html("\tThis predicate prepares the given directory for time logging.\n\tEssentially all it does is traverse the directory tree looking for\n\told administrative files and deleting them.\n")]).
+:- comment(log_time_local / 2, [summary : "Log a time in the local directory", amode : log_time_local(++, ++), args : ["Name" : "Name of test", "Time" : "Time taken to run test"], desc : html("\tLogs to a temporary administrative file in the local directory that\n\tthe test with the given name took the specified time to execute.\n")]).

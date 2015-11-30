@@ -1,0 +1,9 @@
+#! /bin/sh
+ECLIPSEDIR="${ECLIPSEDIR:-/home/dskb/DSKB/mesos/src/examples/Mesos-numa-framework/sources/eclipseclp-aarch64}"
+LD_LIBRARY_PATH="$ECLIPSEDIR/lib/x86_64_linux:$LD_LIBRARY_PATH:/usr/local/lib"
+TCL_LIBRARY="${TCL_LIBRARY:-}"
+TK_LIBRARY="${TK_LIBRARY:-}"
+DAVINCIHOME="${DAVINCIHOME:-$ECLIPSEDIR/daVinci/x86_64_linux}"
+JRE_HOME="${JRE_HOME:-}"
+export ECLIPSEDIR TCL_LIBRARY TK_LIBRARY  LD_LIBRARY_PATH DAVINCIHOME JRE_HOME
+exec "/usr/bin/wish8.5" "/home/dskb/DSKB/mesos/src/examples/Mesos-numa-framework/sources/eclipseclp-aarch64/lib_tcl/tkeclipse.tcl" -- "$@"
